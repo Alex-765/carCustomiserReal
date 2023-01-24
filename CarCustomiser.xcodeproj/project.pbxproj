@@ -16,6 +16,7 @@
 		DA90C964297616BA007BC2BA /* CarCustomiserUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA90C963297616BA007BC2BA /* CarCustomiserUITestsLaunchTests.swift */; };
 		DA90C97129761955007BC2BA /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA90C97029761955007BC2BA /* Car.swift */; };
 		DA90C972297619A2007BC2BA /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA90C97029761955007BC2BA /* Car.swift */; };
+		DA90C974297D7CF0007BC2BA /* StarterCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA90C973297D7CF0007BC2BA /* StarterCars.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		DA90C961297616BA007BC2BA /* CarCustomiserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCustomiserUITests.swift; sourceTree = "<group>"; };
 		DA90C963297616BA007BC2BA /* CarCustomiserUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCustomiserUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DA90C97029761955007BC2BA /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		DA90C973297D7CF0007BC2BA /* StarterCars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterCars.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				DA90C94A297616BA007BC2BA /* Assets.xcassets */,
 				DA90C94C297616BA007BC2BA /* Preview Content */,
 				DA90C97029761955007BC2BA /* Car.swift */,
+				DA90C973297D7CF0007BC2BA /* StarterCars.swift */,
 			);
 			path = CarCustomiser;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			files = (
 				DA90C949297616B9007BC2BA /* ContentView.swift in Sources */,
 				DA90C947297616B9007BC2BA /* CarCustomiserApp.swift in Sources */,
+				DA90C974297D7CF0007BC2BA /* StarterCars.swift in Sources */,
 				DA90C97129761955007BC2BA /* Car.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,15 +23,8 @@ final class CarCustomiserTests: XCTestCase {
     
     func testDisplayStats(){
         let car = Car(make: "Mazda", model: "MX-5", topSpeed: 125, acceleration: 7.7, handling: 5)
-        let display =
-        """
-        Make: \(car.make)
-        Model: \(car.model)
-        Top Speed: \(car.topSpeed) mph
-        Acceleration (0-60): \(String(format: "%.1f", car.acceleration))s
-        Handling: \(car.handling)
-        """
-        let displayoutput = """
+        let display_real = car.displayStats()
+        let display_hope = """
                             Make: Mazda
                             Model: MX-5
                             Top Speed: 125 mph
@@ -39,7 +32,7 @@ final class CarCustomiserTests: XCTestCase {
                             Handling: 5
                             """
         
-        XCTAssertEqual(display, displayoutput)
+        XCTAssertEqual(display_real, display_hope)
     }
 
 }
