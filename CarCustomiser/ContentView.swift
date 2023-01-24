@@ -21,7 +21,27 @@ struct ContentView: View {
     @State private var gearPackage = false
     @State private var ecuFuelPackage = false
     @State private var remainingFunds = 1000
+    @State private var remainingTime = 30
+    
+    var exhaustPackageEnabled: Bool {
+        return exhaustPackage ? false: remainingFunds >= 500 ? false: remainingTime <= 0 ? true: true
+        
+    }
+    var tiresPackageEnabled: Bool {
+        return tiresPackage ? false: remainingFunds >= 500 ? false: remainingTime <= 0 ? true: true
 
+    }
+    var gearPackageEnabled: Bool {
+        return gearPackage ? false: remainingFunds >= 500 ? false:remainingTime <= 0 ? true:  true
+
+    }
+    var ecuAndFuelPackageEnabled: Bool {
+        return ecuFuelPackage ? false: remainingFunds >= 1000 ? false:remainingTime <= 0 ? true:  true
+
+    }
+
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         let exhaustPackageBinding = Binding<Bool> (
             get: { self.exhaustPackage },
@@ -84,22 +104,37 @@ struct ContentView: View {
             }
         )
         VStack{
+            Text("\(remainingTime)")
+                .onReceive(timer) {_ in
+                    if self.remainingTime > 0{
+                        self.remainingTime -= 1
+                    }
+                }
             Form{
                 VStack(alignment: .leading, spacing: 30){
                     Text("\(starterCars.cars[selectedCar].displayStats())")
                     Button("Next Car", action:{
                         selectedCar += 1
+                        resetDisplay()
                     })
                 }
                 Section{
-                    Toggle("Exhaust Package (Cost: 500)", isOn: exhaustPackageBinding )
-                    Toggle("Tires Package (Cost: 500)", isOn: tiresPackageBinding)
-                    Toggle("Gear Package (Cost: 500)", isOn: gearPackageBinding)
-                    Toggle("ECU and Fuel Package (Cost: 1000)", isOn: ecuFuelBinding)
+                    Toggle("Exhaust Package (Cost: 500)", isOn: exhaustPackageBinding ).disabled(exhaustPackageEnabled)
+                    Toggle("Tires Package (Cost: 500)", isOn: tiresPackageBinding).disabled(tiresPackageEnabled)
+                    Toggle("Gear Package (Cost: 500)", isOn: gearPackageBinding).disabled(gearPackageEnabled)
+                    Toggle("ECU and Fuel Package (Cost: 1000)", isOn: ecuFuelBinding).disabled(ecuAndFuelPackageEnabled)
                 }
             }
-            Text("Remaining Funds: \(remainingFunds)").foregroundColor(.red).baselineOffset(20)
+            Text("Remaining Funds: \(remainingFunds)").foregroundColor(.red).baselineOffset(30)
         }
+    }
+    
+    func resetDisplay(){
+        exhaustPackage = false
+        tiresPackage = false
+        gearPackage = false
+        ecuFuelPackage = false
+        remainingFunds = 1000
     }
 }
 
